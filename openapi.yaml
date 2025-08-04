@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: API de Exemplo Modularizada
+  version: 1.0.0
+  description: Exemplo de especificação OpenAPI com referências externas
+servers:
+  - url: https://api.exemplo.com/v1
+
+paths:
+  /users:
+    get:
+      summary: Lista todos os usuários
+      tags: [Usuários]
+      responses:
+        '200':
+          description: Lista de usuários
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './schemas/User.yaml'
+        '400':
+          $ref: './responses/BadRequest.yaml'
+
+components:
+  schemas:
+    User:
+      $ref: './schemas/User.yaml'
